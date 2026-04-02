@@ -30,7 +30,7 @@ export async function GET(req: Request) {
     take: limit,
   })
 
-  return ok(devices.map(d => ({ ...d, createdByName: d.users_devices_created_byTousers?.name })))
+  return ok(devices.map((d: typeof devices[number]) => ({ ...d, createdByName: d.users_devices_created_byTousers?.name })))
 }
 
 export async function POST(req: Request) {
