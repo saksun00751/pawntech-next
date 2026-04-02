@@ -12,7 +12,7 @@ function mustGetEnv(name: string): string {
     throw new Error(`Missing required environment variable: ${name}`);
   }
   return v.trim();
-}
+} 
 
 function parseDbUrl(raw: string): URL {
   // ต้องเป็น URL format เท่านั้น (เช่น mysql://user:pass@host:3306/dbname)
