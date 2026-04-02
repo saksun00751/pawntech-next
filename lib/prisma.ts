@@ -30,14 +30,6 @@ function parseDbUrl(raw: string): URL {
   }
 }
 
-function intEnv(name: string, fallback: number): number {
-  const raw = process.env[name];
-  if (!raw) return fallback;
-  const n = Number(raw);
-  if (!Number.isFinite(n) || n <= 0) return fallback;
-  return Math.floor(n);
-}
-
 function createPrismaClient(): PrismaClient {
   const dbUrl = parseDbUrl(mustGetEnv("DATABASE_URL"));
 
@@ -53,7 +45,7 @@ function createPrismaClient(): PrismaClient {
   if (!user) throw new Error("DATABASE_URL missing username.");
   if (!database) throw new Error("DATABASE_URL missing database name.");
 
-  const connectionLimit = intEnv("DB_POOL_LIMIT", 5);
+  const connectionLimit = 5;
 
   const adapter = new PrismaMariaDb({
     host,
