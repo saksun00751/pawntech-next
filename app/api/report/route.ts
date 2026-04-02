@@ -48,7 +48,7 @@ export async function GET(req: Request) {
     include: { users: { select: { name: true } } },
   })
 
-  const recentRedeems = redeems.map(r => ({
+  const recentRedeems = redeems.map((r: typeof redeems[number]) => ({
     id:         r.device_id,
     owner:      r.owner,
     model:      r.model,
